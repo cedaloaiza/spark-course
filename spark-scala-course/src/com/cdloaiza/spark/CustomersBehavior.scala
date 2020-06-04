@@ -21,8 +21,16 @@ object CustomersBehavior {
     val totalCustumerSpentScala = totalCustumerSpent.collect()
     
     for (customer <- totalCustumerSpentScala) {
-      println(customer._1 + " customer " + customer._2)
+      val customerId = customer._1
+      val totalPurchased = customer._2
+      println(f"customer $customerId%s purshased $$$totalPurchased%.3f")
     }
+    
+    val totalCustumerSpentSorted = totalCustumerSpent.map(x => (x._2, x._1)).sortByKey()
+    
+    val totalCustumerSpentSortedScala = totalCustumerSpentSorted.collect()
+    
+    totalCustumerSpentSortedScala.foreach(println)
     
     
   }
